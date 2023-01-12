@@ -2,14 +2,11 @@
 title: "Accounts"
 description: ""
 lead: ""
-date: 2022-12-30T19:05:18
 lastmod:
   - :git
   - lastmod
-  - date
   - publishDate
 draft: false
-images: []
 menu:
   data:
     parent: "collections"
@@ -40,24 +37,26 @@ particular address appears. This includes obvious locations such as `to` or `fro
 as esoteric locations such as deep inside a tenth-level trace or as the miner of an uncle block.
 The primary goal of TrueBlocks is to identify every appearance for any address on the chain.
 
-The TrueBlocks [index of appearances](/data-model/the-index/) (created by [chifra scrape](/docs/chifra/admin/#chifra-scrape))
+The TrueBlocks [index of appearances](/data-model/the-index/) (created by [chifra scrape](/chifra/admin/#chifra-scrape))
 makes the production of such a list possible. Appearances are stored in [Monitors](/data-model/accounts/#monitor).
 
-The following commands produce and manage appearances:
+The following commands produce and manage Appearances:
 
-- [chifra list](/docs/chifra/accounts/#chifra-list)
-- [chifra export](/docs/chifra/accounts/#chifra-export)
+- [chifra list](/chifra/accounts/#chifra-list)
+- [chifra export](/chifra/accounts/#chifra-export)
 
-Appearance data is made of the following fields:
+Appearances consist of the following fields:
 
-| Field            | Description                                               | Type      |
-| ---------------- | --------------------------------------------------------- | --------- |
-| blockNumber      | the number of the block                                   | blknum    |
-| transactionIndex | the zero-indexed position of the transaction in the block | blknum    |
-| address          | the address of the appearance                             | address   |
-| name             | the name of the address, if found                         | string    |
-| timestamp        | the timestamp for this appearance                         | timestamp |
-| date             | the date represented by the timestamp                     | string    |
+| Field            | Description                                             | Type      |
+| ---------------- | ------------------------------------------------------- | --------- |
+| address          | the address of the appearance                           | address   |
+| blockNumber      | the number of the block                                 | blknum    |
+| transactionIndex | the index of the transaction in the block               | blknum    |
+| traceIndex       | the zero-based index of the trace in the transaction    | blknum    |
+| reason           | the location in the data where the appearance was found | string    |
+| name             | the name of the address, if found                       | string    |
+| timestamp        | the timestamp for this appearance                       | timestamp |
+| date             | the date represented by the timestamp                   | string    |
 
 ## Reconciliation
 
@@ -77,11 +76,11 @@ simple transfer of ETH from one address to another. Obviously, the sender's and 
 reconciliations will differ (in opposite proportion to each other). The `accountedFor` address
 is always present as the `assetAddress` in the first reconciliation of the statements array.
 
-The following commands produce and manage reconciliations:
+The following commands produce and manage Reconciliations:
 
-- [chifra export](/docs/chifra/accounts/#chifra-export)
+- [chifra export](/chifra/accounts/#chifra-export)
 
-Reconciliation data is made of the following fields:
+Reconciliations consist of the following fields:
 
 | Field               | Description                                                                                                                                    | Type      |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
@@ -138,22 +137,22 @@ Reconciliation data is made of the following fields:
 <!-- markdownlint-disable MD033 MD036 MD041 -->
 A Monitor is a list of [Appearances](/data-model/accounts/#appearance) associated with a given
 address along with various details about those appearances. A monitor is created when a user
-expresses interest in an address by calling either [chifra list](/docs/chifra/accounts/#chifra-list)
-or [chifra export](/docs/chifra/accounts/#chifra-export) tool (or querying thier associated APIs).
+expresses interest in an address by calling either [chifra list](/chifra/accounts/#chifra-list)
+or [chifra export](/chifra/accounts/#chifra-export) tool (or querying thier associated APIs).
 
 Once created, a monitor may be periodically *freshened* by calling either `chifra list` or `chifra
 export`, however, it is also possible to freshen a monitor continually with
-[chifra scrape --monitors](/docs/chifra/admin/#chifra-scrape). This tool watches the front of the
+[chifra scrape --monitors](/chifra/admin/#chifra-scrape). This tool watches the front of the
 chain and repeatedly calls `chifra list`.
 
-The following commands produce and manage monitors:
+The following commands produce and manage Monitors:
 
-- [chifra monitors](/docs/chifra/accounts/#chifra-monitors)
-- [chifra list](/docs/chifra/accounts/#chifra-list)
-- [chifra export](/docs/chifra/accounts/#chifra-export)
-- [chifra config](/docs/chifra/admin/#chifra-config)
+- [chifra monitors](/chifra/accounts/#chifra-monitors)
+- [chifra list](/chifra/accounts/#chifra-list)
+- [chifra export](/chifra/accounts/#chifra-export)
+- [chifra config](/chifra/admin/#chifra-config)
 
-Monitor data is made of the following fields:
+Monitors consist of the following fields:
 
 | Field       | Description                                    | Type    |
 | ----------- | ---------------------------------------------- | ------- |
@@ -184,16 +183,16 @@ TrueBlocks allows you to name addresses of interest to you and either share thos
 an on-chain mechanism) or keep them private if you so desire.
 
 Over the years, we've paid careful attention to the 'airwaves' and have collected together a
-'starter-set' of named addresses which is available through the [chifra names](/docs/chifra/accounts/#chifra-names)
+'starter-set' of named addresses which is available through the [chifra names](/chifra/accounts/#chifra-names)
 command line. For example, every time people say "Show me your address, and we will airdrop some
 tokens" on Twitter, we copy and paste all those addresses. We figure if you're going to DOX
 yourselves, we might as well take advantage of it. Sorry...not sorry.
 
-The following commands produce and manage names:
+The following commands produce and manage Names:
 
-- [chifra names](/docs/chifra/accounts/#chifra-names)
+- [chifra names](/chifra/accounts/#chifra-names)
 
-Name data is made of the following fields:
+Names consist of the following fields:
 
 | Field      | Description                                                                         | Type    |
 | ---------- | ----------------------------------------------------------------------------------- | ------- |
@@ -224,11 +223,11 @@ is not a good place to store this very important information. For this reason, T
 EtherScan to acquire ABI files and therefor one needs to get an EtherScan API key to use this
 function.
 
-The following commands produce and manage abis:
+The following commands produce and manage Abis:
 
-- [chifra abis](/docs/chifra/accounts/#chifra-abis)
+- [chifra abis](/chifra/accounts/#chifra-abis)
 
-Abi data is made of the following fields:
+Abis consist of the following fields:
 
 | Field      | Description                                  | Type                                      |
 | ---------- | -------------------------------------------- | ----------------------------------------- |
@@ -237,7 +236,7 @@ Abi data is made of the following fields:
 
 ### Notes
 
-See the [chifra abis](/docs/chifra/accounts/#chifra-abis) command line for information about getting an EtherScan key.
+See the [chifra abis](/chifra/accounts/#chifra-abis) command line for information about getting an EtherScan key.
 
 ## AppearanceCount
 
@@ -245,12 +244,12 @@ See the [chifra abis](/docs/chifra/accounts/#chifra-abis) command line for infor
 The `appearanceCount` data model is used mostly by the frontend explorer application. It carries
 various information about the monitor data for an address.
 
-The following commands produce and manage appearancecounts:
+The following commands produce and manage AppearanceCounts:
 
-- [chifra list](/docs/chifra/accounts/#chifra-list)
-- [chifra export](/docs/chifra/accounts/#chifra-export)
+- [chifra list](/chifra/accounts/#chifra-list)
+- [chifra export](/chifra/accounts/#chifra-export)
 
-Appearancecount data is made of the following fields:
+AppearanceCounts consist of the following fields:
 
 | Field    | Description                                               | Type    |
 | -------- | --------------------------------------------------------- | ------- |

@@ -5,7 +5,7 @@ lead: "If you want to use TrueBlocks to its full potential, then, yes, you need
 a node. But if you don't have a node, we use the IPFS to provide some workarounds."
 date: 2020-10-06T08:48:45+00:00
 draft: false
-alias: "/docs/prologue/do-i-need-a-node"
+aliases: "/docs/prologue/do-i-need-a-node"
 images: []
 menu:
   docs:
@@ -33,8 +33,8 @@ and some good hardware.
 
 If you want to build your own index, plan for a few days and run `chifra scrape`.
 Before doing so, you probably want to read the relevant section in the
-["How Can I Get the Index"](/docs/install/get-the-index) article,
-and [the `scrape` command documentation](/docs/chifra/admin#chifra-scrape).
+["How Can I Get the Index"](/docs/install/build-unchained-index) article,
+and [the `scrape` command documentation](/chifra/admin#chifra-scrape).
 
 Fortunately, TrueBlocks also publishes the index on the IPFS,
 which lets you access it locally without running a node.
@@ -50,7 +50,7 @@ Downloading the IPFS manifest is a good option for many users:
 
 There are two commands to download the index, `chifra init` and `chifra pins`.
 The pros and cons of each approach are outlined in the
-["How Can I Get the Index?"](/docs/install/get-the-index) article.
+["How Can I Get the Index?"](/docs/install/build-unchained-index) article.
 
 ### Drawbacks of using the IPFS manifest
 

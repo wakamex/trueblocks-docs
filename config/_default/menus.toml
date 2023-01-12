@@ -31,12 +31,12 @@ weight = 200
 
 [[main]]
 identifier = "data"
-name = "Data Model"
+name = "Model"
 url = "/data-model/intro"
 weight = 300
     [[data]]
     identifier = "intro"
-    name = "Data Model"
+    name = "Model"
     url = "/data-model/intro"
     weight = 10
     [[data]]
